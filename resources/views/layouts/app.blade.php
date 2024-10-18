@@ -27,7 +27,7 @@
                             <a class="nav-link" href="{{ route('pegawais.index') }}">Pegawai</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Mahasiswa</a>
+                            <a class="nav-link" href="{{ route('mahasiswas.index') }}">Mahasiswa</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">Nilai</a>
