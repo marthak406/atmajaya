@@ -14,4 +14,9 @@ class Dosen extends Model
         'nip',
         'kelas'
     ];
+
+    public function nilais()
+    {
+        return $this->hasMany(Nilai::class, 'id_dosen');
+    }
 }

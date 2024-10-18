@@ -16,9 +16,12 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
+        $guards = ['admin', 'dosen', 'pegawai', 'mahasiswa'];
 
-        if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->intended(route('admin.dashboard'));
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->attempt($credentials)) {
+                return redirect()->intended(route('admin.dashboard'));
+            }
         }
 
         return redirect()->back()->withErrors(['email' => 'Email atau password salah.']);

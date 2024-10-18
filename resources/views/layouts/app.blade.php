@@ -17,21 +17,32 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dosens.index') }}">Dosen</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('pegawais.index') }}">Pegawai</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('mahasiswas.index') }}">Mahasiswa</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Nilai</a>
-                        </li>
+                        @if(Auth::check() && (Auth::user()->role === 'dosen' || Auth::user()->role === 'pegawai' || Auth::user()->role === 'mahasiswa'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('nilais.index') }}">Nilai</a>
+                            </li>
+                        @endif
+    
+                        @if(Auth::check() && Auth::user()->role === 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('dosens.index') }}">Dosen</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('pegawais.index') }}">Pegawai</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('mahasiswas.index') }}">Mahasiswa</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('nilais.index') }}">Nilai</a>
+                            </li>
+                        @endif
                     </ul>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">

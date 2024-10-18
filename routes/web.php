@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\NilaiController;
 use App\Http\Middleware\CheckRole;
 
 Route::get('/', [AdminLoginController::class, 'showLoginForm'])->name('login');
@@ -17,4 +18,5 @@ Route::middleware(['auth:admin',CheckRole::class.':admin'])->group(function () {
     Route::resource('/dosens', DosenController::class);
     Route::resource('/pegawais', PegawaiController::class);
     Route::resource('/mahasiswas', MahasiswaController::class);
+    Route::resource('/nilais', NilaiController::class);
 });

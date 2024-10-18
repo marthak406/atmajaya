@@ -14,4 +14,9 @@ class Pegawai extends Model
         'nik',
         'divisi'
     ];
+
+    public function nilais()
+    {
+        return $this->hasMany(Nilai::class, 'id_user_verifikasi');
+    }
 }
